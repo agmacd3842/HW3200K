@@ -4,8 +4,7 @@
 
 import arcpy
 from arcpy import env
-env.workspace = "P:/PythonEx06/Exercise06/"
-outWorkspace = "P:/PythonExo6/Exercise06/Exercise06_2/"
+env.workspace = "P:/gitprojects/HW3200K/PythonEx06/Exercise06/"
 fclist = arcpy.ListFeatureClasses()
 for item in fclist:
     name = arcpy.Describe(item)
@@ -16,13 +15,13 @@ for item in fclist:
 ### Challenge 2
 import arcpy
 from arcpy import env
-env.workspace = "P:/PythonEx06/Exercise06/"
-outWorkspace = "P:/PythonEx06/Exercise06/"
+env.workspace = "P:/gitprojects/HW3200K/PythonEx06/Exercise06/"
+arcpy.CreateFileGDB_management("P:/gitprojects/HW3200K/PythonEx06/", "challenge2.gdb")
 fclist = arcpy.ListFeatureClasses()
 for item in fclist:
     shapefile = arcpy.Describe(item)
     desc = shapefile.shapeType
     if desc == "Polygon":  
-        arcpy.CopyFeatures_management(shapefile, outWorkspace)
+        arcpy.CopyFeatures_management(item, "P:/gitprojects/HW3200K/PythonEx06/challenge2.gdb/" + shapefile.name.split('.')[0])
     
     
